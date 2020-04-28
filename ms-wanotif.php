@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: MS Whatsapp Notif
- * Version: 1.0.0
+ * Version: 1.1.0
  * Description: Kirim notifikasi WA ke tim packing | Support: tom.wpdev@gmail.com | Phone: 08113644664 
  */
 
