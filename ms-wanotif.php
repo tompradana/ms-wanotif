@@ -171,7 +171,14 @@ function require_woocommerce() {
 Mohon segera diproses!
 
 {{produk}}</textarea>
-						<small>Bisa pakai kode {{produk}}</small>
+						<small>Bisa pakai kode :<br/>
+							{{produk}}<br/>
+							{{id_pesanan}}<br/>
+							{{nama_pesanan}}<br/>
+							{{link_pesanan}}<br/>
+							{{nama_pembeli}}<br/>
+							{{nama_penerima}}
+						</small>
 					</p>
 					<p><a ms_timpacking_submit class="button button-primary button-large widefat"><?php _e( 'Beritahu Tim', 'ms-printlabel' ); ?></a></p>
 				</div>
@@ -287,6 +294,11 @@ Mohon segera diproses!
 			$i++; }
 
 			$catatan = str_replace( '{{produk}}', $produk, $catatan );
+			$catatan = str_replace( '{{id_pesanan}}', sprintf('*#%s*',$pesanan->get_id()), $catatan );
+			$catatan = str_replace( '{{nama_pesanan}}', sprintf('*Order #%s*', $pesanan->get_id()), $catatan );
+			$catatan = str_replace( '{{link_pesanan}}', get_edit_post_link( $pesanan->get_id() ), $catatan );
+			$catatan = str_replace( '{{nama_pembeli}}', $pesanan->get_formatted_billing_full_name(), $catatan );
+			$catatan = str_replace( '{{nama_penerima}}', $pesanan->get_formatted_shipping_full_name(), $catatan );
 			
 			$wa_message_url = add_query_arg( array(
 				'phone' => $phone,
